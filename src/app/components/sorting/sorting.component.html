@@ -1,0 +1,24 @@
+<div id="radio">
+    <h2>Implementation of sorting and array<hr></h2>
+    <input type="radio" name="gender" value="male" (click)="clickmale();"> Male
+<input type="radio" name="gender" value="female" (click)="clickfemale();"> Female
+<input type="radio" name="both" value="both" (click)="clickboth()"> both
+</div>
+<div id="table">
+<table>
+  <thead>
+    <th>Gender</th>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Salary</th>
+    <th>Date Of Birth</th>
+  </thead>
+  <tbody *ngFor="let person of people">
+    <td>{{ person.gender }}</td>
+    <td>{{ person.code }}</td>
+    <td>{{ person.name }}</td>
+    <td>{{ person.salary }}</td>
+    <td>{{ person.dob }}</td>
+  </tbody>
+</table>
+</div>

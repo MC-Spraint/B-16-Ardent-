@@ -34,9 +34,14 @@
               "src/assets"
             ],
             "styles": [
+              "bootspraint/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "bootspraint/jquery.slim.min.js",
+            "bootspraint/popper.min.js",
+            "bootspraint/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {

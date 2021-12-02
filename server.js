@@ -1,33 +1,26 @@
-const express = require('express');
-const http = require('http');
-const path = require('path');
+const path = require("path");
+const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + '/www'));
-app.get('/*', (req,res) => {res.sendFile(path.join(__dirname))});
+//^For extracting form data in to req.body
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
-const server = http.createServer(app);
-app.listen(PORT,()=>{console.log('listening....')});
+//^For serving static files
+app.use(express.static(__dirname + "/www"));
 
-// const path = require("path");
-// const http = require("http");
+app.get("/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "www/index.html"), function (err) {
+    if (err) {
+        res.status(500).send(err);
+    }
+    });
+});
 
-// const app = require("express")();
 
-// const bodyParser = require("body-parser");
-// const PORT = process.env.PORT || 3000;
-
-// //^For extracting form data in to req.body
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended:true}));
-
-// //! For fetching files from frontend
-// app.use(require('express').static('ngLearner'));
-// app.use('/dist/ngLearner',require('express').static(path.join(__dirname+'/dist/ngLearner')))
-
-// app.get('/*', (req,res)=> res.sendFile(path.join(__dirname+'/dist/ngLearner')))
-
-// app.listen(PORT,() =>{
-//     console.log(`Server running on ${PORT}`)
-// })
+app.listen(PORT,() =>{
+    console.log(`Server running on port no. ${PORT}`)
+})
